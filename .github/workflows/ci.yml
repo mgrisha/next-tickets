@@ -1,33 +1,31 @@
-name: Next.js CI/CD
+name: Next.js CI
 
 on:
   push:
     branches: ["main"]
-
-permissions:
-  contents: write
+  pull_request:
+    branches: ["main"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      # 1. Завантажуємо код
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      # 2. Встановлюємо Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: "npm"
 
+      # 3. Встановлюємо залежності
       - name: Install dependencies
         run: npm install
 
+      # 4. Будуємо Next.js додаток
       - name: Build Next.js app
-        run: npm run build && npm run export
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+        run: npm run build
