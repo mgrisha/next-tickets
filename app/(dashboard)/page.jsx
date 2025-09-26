@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main>
-      <h2>Dashbord</h2>
+      <h2>Dashboard</h2>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero
         repellendus tempore, exercitationem odit, quasi doloremque possimus
