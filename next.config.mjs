@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  basePath: "/next-tickets",
-};
+const nextConfig = {};
 
 export default nextConfig;
